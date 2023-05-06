@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mudgin Coffee</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 200;
+    color: var(--tg-theme-text-color);
+    background: var(--tg-theme-bg-color);
+}
+#start {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+h1{
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+img {
+    width: 70px;
+    margin: 30px auto;
+}
+p {
+    width: 350px;
+    margin: 0 auto;
+}
+button {
+    border: 0;
+    border-radius: 5px;
+    margin-top: 50px;
+    height: 60px;
+    width: 200px;
+    font-size: 20px;
+    font-weight: 500;
+    transition: all 500ms ease;
+    color: var(--tg-theme-button-text-color);
+    background: var(--tg-theme-button-color);
+}
+button:hover {
+    background: var(--tg-theme-secondary-bg-color);
+}
+#order_form {
+    display: none;
+    text-align: center;
+}
+input {
+    width: 90%;
+    outline: none;
+    margin: 10px 5%;
+    padding: 15px 10px;
+    font-size: 14px;
+    border: 2px solid silver;
+    border-radius: 5px;
+    color: var(--tg-theme-text-color);
+    background: var(--tg-theme-secondary-bg-color);
+}
+input:focus {
+    border-color: var(--tg-theme-button-color);
+}
+#country {
+    text-align: center;
+    color: var(--tg-theme-text-color);
+    background: var(--tg-theme-button-color);
+    width: 90%;
+    border-radius: 8px;
+}
+#order {
+    display: none;
+}
+#country_select {
+    width: 80%;
+    height: 80%;
+    background: var(--tg-theme-bg-color);
+}
+#country_select {
+    display: none;
+    width: 100%;
+}
+#order {
+    display: none;
+}
+#belarus_country_num, #kz_country_num, #russia_country_num {
+    color: var(--tg-theme-hint-color);    
+}
+#belarus_country_text, #kz_country_text, #russia_country_text {
+    border-radius: 0%;
+    width: 100%;
+    left: 80%;
+}
+#belarus_country_text, #belarus_country_num, #kz_country_text, #kz_country_num, #russia_country_text, #russia_country_num {
+    display: inline;    
+    text-align: center;    
+}
+#belarus_country_but, #kz_country_but, #russia_country_but {
+    width: 100%;
+    height: 60px;
+    background: var(--tg-theme-bg-color);
+}
+#belarus_country_but:hover, #kz_country_but:hover, #russia_country_but:hover   {
+    background: var(--tg-theme-bg-color);
+}
+#coffee_order, #popcorn_order, #cocoa_order, #smoothie_order {
+    width: 100%;
+    height: 15%;
+}
+#coffee_order_add, #popcorn_order_add, #cocoa_order_add, #smoothie_order_add {
+    background-color: #6ca71a;
+    width: 30%;
+    height: 30px;
+    font-size: 19px;
+}
+#coffee_order_plus, #coffee_order_minus, #popcorn_order_plus, #popcorn_order_minus, #cocoa_order_plus, #cocoa_order_minus, #smoothie_order_plus, #smoothie_order_minus {
+    height: 30px;  
+    width: 15%;
+    font-size: 19px;  
+    display: none;
+}
+#coffee_order_plus, #popcorn_order_plus, #cocoa_order_plus, #smoothie_order_plus {
+    background-color: #6ca71a;
+}
+#coffee_order_minus, #popcorn_order_minus, #cocoa_order_minus, #smoothie_order_minus {
+    background-color: #f40f3e;
+}
+#cart {
+    display: none;    
+}
+</style>
+</head>
+<body>
+<div id="start">
+<h1>Mudgin Coffee</h1> 
+<button id="buy">Начать делать заказ</button>
+</div>
+<div id="order">
+<center>
+<div id="coffee_order">
+<img src="./img/Coffee.webp">
+<div>Каппучино</div>
+<br>
+<p id="coffee_order_count_text"></p>
+<button id="coffee_order_add">
+Добавить
+</button>
+<button id="coffee_order_minus">-</button>
+<button id="coffee_order_plus">+</button>
+</div>
+<div id="popcorn_order">
+<img src="./img/Pop corn.webp">
+<div>Попкорн</div>
+<br>
+<p id="popcorn_order_count_text"></p>
+<button id="popcorn_order_add">
+Добавить
+</button>
+<button id="popcorn_order_minus">-</button>
+<button id="popcorn_order_plus">+</button>
+</div>
+<div id="cocoa_order">
+<img src="./img/Сocoa.webp">
+<div>Какао</div>
+<br>
+<p id="cocoa_order_count_text"></p>
+<button id="cocoa_order_add">
+Добавить
+</button>
+<button id="cocoa_order_minus">-</button>
+<button id="cocoa_order_plus">+</button>
+</div>
+<div id="smoothie_order">
+<img src="./img/Smoothie.webp">
+<div>Смузи</div>
+<br>
+<p id="smoothie_order_count_text"></p>
+<button id="smoothie_order_add">
+Добавить
+</button>
+<button id="smoothie_order_minus">-</button>
+<button id="smoothie_order_plus">+</button>
+</div>
+<button id="order_complete">Далее</button>
+</center>
+</div>
+<div id="country_select">
+<center>
+<div id="belarus_country">
+<button id="belarus_country_but"><div id="belarus_country_text">🇧🇾  Беларусь</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<div id="belarus_country_num">+375</div></button>
+</div>
+<div id="kz_country">
+<button id="kz_country_but"><div id="kz_country_text">🇰🇿  Казахстан</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<div id="kz_country_num">+7</div></button>
+</div>
+<div id="russia_country">
+<button id="russia_country_but"><div id="russia_country_text">🇷🇺  Россия</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<div id="russia_country_num">+7</div></button>
+</div>
+
+</div>
+<div id="order_form">
+<p id="error"> </p>
+<input type="text" placeholder="Введите имя" id="user_name">
+<button id="country">Выберите вашу страну</button>
+<input type="tel" placeholder="Введите номер телефона" id="user_phone" class="phone">
+<button id="order_but">Далее</button>
+</div>
+<div id="cart">
+<div id="coffee_cart">
+<p>Ваш заказ:</p><br>
+<p id="cart_text"></p>
+<button id="cart_but">Оформить заказ</button>
+</div>
+</div>
+</center>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script>!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):a("object"==typeof exports?require("jquery"):jQuery)}(function(a){var b,c=navigator.userAgent,d=/iphone/i.test(c),e=/chrome/i.test(c),f=/android/i.test(c);a.mask={definitions:{9:"[0-9]",a:"[A-Za-z]","*":"[A-Za-z0-9]"},autoclear:!0,dataName:"rawMaskFn",placeholder:"_"},a.fn.extend({caret:function(a,b){var c;if(0!==this.length&&!this.is(":hidden"))return"number"==typeof a?(b="number"==typeof b?b:a,this.each(function(){this.setSelectionRange?this.setSelectionRange(a,b):this.createTextRange&&(c=this.createTextRange(),c.collapse(!0),c.moveEnd("character",b),c.moveStart("character",a),c.select())})):(this[0].setSelectionRange?(a=this[0].selectionStart,b=this[0].selectionEnd):document.selection&&document.selection.createRange&&(c=document.selection.createRange(),a=0-c.duplicate().moveStart("character",-1e5),b=a+c.text.length),{begin:a,end:b})},unmask:function(){return this.trigger("unmask")},mask:function(c,g){var h,i,j,k,l,m,n,o;if(!c&&this.length>0){h=a(this[0]);var p=h.data(a.mask.dataName);return p?p():void 0}return g=a.extend({autoclear:a.mask.autoclear,placeholder:a.mask.placeholder,completed:null},g),i=a.mask.definitions,j=[],k=n=c.length,l=null,a.each(c.split(""),function(a,b){"?"==b?(n--,k=a):i[b]?(j.push(new RegExp(i[b])),null===l&&(l=j.length-1),k>a&&(m=j.length-1)):j.push(null)}),this.trigger("unmask").each(function(){function h(){if(g.completed){for(var a=l;m>=a;a++)if(j[a]&&C[a]===p(a))return;g.completed.call(B)}}function p(a){return g.placeholder.charAt(a<g.placeholder.length?a:0)}function q(a){for(;++a<n&&!j[a];);return a}function r(a){for(;--a>=0&&!j[a];);return a}function s(a,b){var c,d;if(!(0>a)){for(c=a,d=q(b);n>c;c++)if(j[c]){if(!(n>d&&j[c].test(C[d])))break;C[c]=C[d],C[d]=p(d),d=q(d)}z(),B.caret(Math.max(l,a))}}function t(a){var b,c,d,e;for(b=a,c=p(a);n>b;b++)if(j[b]){if(d=q(b),e=C[b],C[b]=c,!(n>d&&j[d].test(e)))break;c=e}}function u(){var a=B.val(),b=B.caret();if(o&&o.length&&o.length>a.length){for(A(!0);b.begin>0&&!j[b.begin-1];)b.begin--;if(0===b.begin)for(;b.begin<l&&!j[b.begin];)b.begin++;B.caret(b.begin,b.begin)}else{for(A(!0);b.begin<n&&!j[b.begin];)b.begin++;B.caret(b.begin,b.begin)}h()}function v(){A(),B.val()!=E&&B.change()}function w(a){if(!B.prop("readonly")){var b,c,e,f=a.which||a.keyCode;o=B.val(),8===f||46===f||d&&127===f?(b=B.caret(),c=b.begin,e=b.end,e-c===0&&(c=46!==f?r(c):e=q(c-1),e=46===f?q(e):e),y(c,e),s(c,e-1),a.preventDefault()):13===f?v.call(this,a):27===f&&(B.val(E),B.caret(0,A()),a.preventDefault())}}function x(b){if(!B.prop("readonly")){var c,d,e,g=b.which||b.keyCode,i=B.caret();if(!(b.ctrlKey||b.altKey||b.metaKey||32>g)&&g&&13!==g){if(i.end-i.begin!==0&&(y(i.begin,i.end),s(i.begin,i.end-1)),c=q(i.begin-1),n>c&&(d=String.fromCharCode(g),j[c].test(d))){if(t(c),C[c]=d,z(),e=q(c),f){var k=function(){a.proxy(a.fn.caret,B,e)()};setTimeout(k,0)}else B.caret(e);i.begin<=m&&h()}b.preventDefault()}}}function y(a,b){var c;for(c=a;b>c&&n>c;c++)j[c]&&(C[c]=p(c))}function z(){B.val(C.join(""))}function A(a){var b,c,d,e=B.val(),f=-1;for(b=0,d=0;n>b;b++)if(j[b]){for(C[b]=p(b);d++<e.length;)if(c=e.charAt(d-1),j[b].test(c)){C[b]=c,f=b;break}if(d>e.length){y(b+1,n);break}}else C[b]===e.charAt(d)&&d++,k>b&&(f=b);return a?z():k>f+1?g.autoclear||C.join("")===D?(B.val()&&B.val(""),y(0,n)):z():(z(),B.val(B.val().substring(0,f+1))),k?b:l}var B=a(this),C=a.map(c.split(""),function(a,b){return"?"!=a?i[a]?p(b):a:void 0}),D=C.join(""),E=B.val();B.data(a.mask.dataName,function(){return a.map(C,function(a,b){return j[b]&&a!=p(b)?a:null}).join("")}),B.one("unmask",function(){B.off(".mask").removeData(a.mask.dataName)}).on("focus.mask",function(){if(!B.prop("readonly")){clearTimeout(b);var a;E=B.val(),a=A(),b=setTimeout(function(){B.get(0)===document.activeElement&&(z(),a==c.replace("?","").length?B.caret(0,a):B.caret(a))},10)}}).on("blur.mask",v).on("keydown.mask",w).on("keypress.mask",x).on("input.mask paste.mask",function(){B.prop("readonly")||setTimeout(function(){var a=A(!0);B.caret(a),h()},0)}),e&&f&&B.off("input.mask").on("input.mask",u),A()})}})});</script>
+<script>
+let bot = window.Telegram.WebApp;
+let buy = document.getElementById("buy");
+let country_selected = "no";
+let order_but = document.getElementById("order_but");
+let cart = document.getElementById("cart");
+let cart_but = document.getElementById("cart_but");
+let coffee_cart_text = document.getElementById("coffee_cart_text");
+let start = document.getElementById("start");
+let coffee_order_add = document.getElementById("coffee_order_add");
+let coffee_order_plus = document.getElementById("coffee_order_plus");
+let coffee_order_minus = document.getElementById("coffee_order_minus");
+let coffee_order_count = document.getElementById("coffee_order_count");
+let coffee_order_count_text = document.getElementById("coffee_order_count_text");
+let coffee_selected = false;
+let coffee_count = 0; 
+let popcorn_order_add = document.getElementById("popcorn_order_add");
+let popcorn_order_plus = document.getElementById("popcorn_order_plus");
+let popcorn_order_minus = document.getElementById("popcorn_order_minus");
+let popcorn_order_count = document.getElementById("popcorn_order_count");
+let popcorn_order_count_text = document.getElementById("popcorn_order_count_text");
+let popcorn_selected = false;
+let popcorn_count = 0;
+let cocoa_order_add = document.getElementById("cocoa_order_add");
+let cocoa_order_plus = document.getElementById("cocoa_order_plus");
+let cocoa_order_minus = document.getElementById("cocoa_order_minus");
+let cocoa_order_count = document.getElementById("cocoa_order_count");
+let cocoa_order_count_text = document.getElementById("cocoa_order_count_text");
+let cocoa_selected = false;
+let cocoa_count = 0;
+let smoothie_order_add = document.getElementById("smoothie_order_add");
+let smoothie_order_plus = document.getElementById("smoothie_order_plus");
+let smoothie_order_minus = document.getElementById("smoothie_order_minus");
+let smoothie_order_count = document.getElementById("smoothie_order_count");
+let smoothie_order_count_text = document.getElementById("smoothie_order_count_text");
+let smoothie_selected = false;
+let smoothie_count = 0;
+let order_form = document.getElementById("order_form");
+let order = document.getElementById("order");
+let order_complete = document.getElementById("order_complete");
+let mistake = document.getElementById("error");
+let corr_phone = document.getElementById("corr_phone");
+let uncorr_phone = document.getElementById("uncorr_phone");
+let country = document.getElementById("country");
+let russia_country_but = document.getElementById("russia_country_but");
+let kz_country_but = document.getElementById("kz_country_but");
+let belarus_country_but = document.getElementById("belarus_country_but");
+let country_select = document.getElementById("country_select");
+bot.expand();
+buy.addEventListener("click", () => {
+    start.style.display = "none";
+    order.style.display = "block";
+});
+order_complete.addEventListener("click", () => {
+    order.style.display = "none";
+    order_form.style.display = "block";
+});
+order_but.addEventListener("click", () => {
+    order_form.style.display = "none";
+    cart.style.display = "block";
+    if (coffee_selected == true) {
+        cart_text.innerText = cart_text.innerText + "\n" + "Кофе * " +  coffee_count     
+    }
+    if (popcorn_selected == true) {
+        cart_text.innerText = cart_text.innerText + "\n" + "Попкорн * " +  popcorn_count     
+    }
+    if (cocoa_selected == true) {
+        cart_text.innerText = cart_text.innerText + "\n" + "Какао * " +  cocoa_count     
+    }
+    if (smoothie_selected == true) {
+        cart_text.innerText = cart_text.innerText + "\n" + "Смузи * " +  smoothie_count     
+    }
+});
+cart_but.addEventListener("click", () => {
+    let user_name = document.getElementById("user_name").value;
+    let user_phone = document.getElementById("user_phone").value;
+    if (user_name.length < 4) {
+        mistake.innerText = "У вас слишком короткое имя 😀";       
+    }
+    else if (user_phone.length < 10) {
+        mistake.innerText = "Ошибка в номере телефона";
+    }
+    else {
+        let data = {
+            name: user_name,
+            phone: user_phone,
+            coffee: coffee_selected,
+            coffee_count: coffee_count,
+            popcorn: popcorn_selected,
+            popcorn_count: popcorn_count,
+            cocoa: cocoa_selected,
+            cocoa_count: cocoa_count,
+            smoothie: smoothie_selected,
+            smoothie_count: smoothie_count
+        }
+    bot.sendData(JSON.stringify(data));
+    bot.close();
+    }
+});
+country.addEventListener("click", () => {
+    order_form.style.display = "none";
+    country_select.style.display = "block";
+});
+coffee_order_add.addEventListener("click", () => {
+    coffee_selected = true;
+    coffee_count = 1;
+    coffee_order_count_text.innerText = 1;
+    coffee_order_plus.style.display = "inline";
+    coffee_order_minus.style.display = "inline";
+    coffee_order_add.style.display = "none";
+});
+coffee_order_plus.addEventListener("click", () => {
+    coffee_count = coffee_count + 1;
+    coffee_order_count_text.innerText = coffee_count;
+});
+coffee_order_minus.addEventListener("click", () => {
+    if (coffee_count == 1) {
+        coffee_selected = false;
+        coffee_order_add.style.display = "block";
+        coffee_order_count_text.innerText = " ";
+        coffee_order_plus.style.display = "none";
+        coffee_order_minus.style.display = "none";
+    } else {
+        coffee_count = coffee_count - 1; 
+        coffee_order_count_text.innerText = coffee_count;  
+    }
+});
+popcorn_order_add.addEventListener("click", () => {
+    popcorn_selected = true;
+    popcorn_count = 1;
+    popcorn_order_count_text.innerText = 1;
+    popcorn_order_plus.style.display = "inline";
+    popcorn_order_minus.style.display = "inline";
+    popcorn_order_add.style.display = "none";
+});
+popcorn_order_plus.addEventListener("click", () => {
+    popcorn_count = popcorn_count + 1;
+    popcorn_order_count_text.innerText = popcorn_count;
+});
+popcorn_order_minus.addEventListener("click", () => {
+    if (popcorn_count == 1) {
+        popcorn_selected = false;
+        popcorn_order_add.style.display = "block";
+        popcorn_order_count_text.innerText = " ";
+        popcorn_order_plus.style.display = "none";
+        popcorn_order_minus.style.display = "none";
+    } else {
+        popcorn_count = popcorn_count - 1; 
+        popcorn_order_count_text.innerText = popcorn_count;  
+    }
+});
+cocoa_order_add.addEventListener("click", () => {
+    cocoa_selected = true;
+    cocoa_count = 1;
+    cocoa_order_count_text.innerText = 1;
+    cocoa_order_plus.style.display = "inline";
+    cocoa_order_minus.style.display = "inline";
+    cocoa_order_add.style.display = "none";
+});
+cocoa_order_plus.addEventListener("click", () => {
+    cocoa_count = cocoa_count + 1;
+    cocoa_order_count_text.innerText = cocoa_count;
+});
+cocoa_order_minus.addEventListener("click", () => {
+    if (cocoa_count == 1) {
+        cocoa_selected = false;
+        cocoa_order_add.style.display = "block";
+        cocoa_order_count_text.innerText = " ";
+        cocoa_order_plus.style.display = "none";
+        cocoa_order_minus.style.display = "none";
+    } else {
+        cocoa_count = cocoa_count - 1; 
+        cocoa_order_count_text.innerText = cocoa_count;  
+    }
+});
+smoothie_order_add.addEventListener("click", () => {
+    smoothie_selected = true;
+    smoothie_count = 1;
+    smoothie_order_count_text.innerText = 1;
+    smoothie_order_plus.style.display = "inline";
+    smoothie_order_minus.style.display = "inline";
+    smoothie_order_add.style.display = "none";
+});
+smoothie_order_plus.addEventListener("click", () => {
+     smoothie_count = smoothie_count + 1;
+     smoothie_order_count_text.innerText = smoothie_count;
+});
+smoothie_order_minus.addEventListener("click", () => {
+    if (smoothie_count == 1) {
+        smoothie_selected = false;
+        smoothie_order_add.style.display = "block";
+        smoothie_order_count_text.innerText = " ";
+        smoothie_order_plus.style.display = "none";
+        smoothie_order_minus.style.display = "none";
+    } else {
+        smoothie_count = smoothie_count - 1; 
+        smoothie_order_count_text.innerText = smoothie_count;  
+    }
+});
+russia_country_but.addEventListener("click", () => {
+    country_select.style.display = "none";
+    order_form.style.display = "block";
+    country_selected = "yes";
+    $(".phone").mask("+7 999 999 9999");
+    country.textContent = "🇷🇺 Россия";
+    user_phone.focus();
+});
+kz_country_but.addEventListener("click", () => {
+    country_select.style.display = "none";
+    order_form.style.display = "block";
+    country_selected = "yes";
+    $(".phone").mask("+7 999 999 9999");
+    country.textContent = "🇰🇿  Казахстан";
+    user_phone.focus();
+});
+belarus_country_but.addEventListener("click", () => {
+    country_select.style.display = "none";
+    order_form.style.display = "block";
+    country_selected = "yes";
+    $(".phone").mask("+375 99 999 9999");
+    country.textContent = "🇧🇾  Беларусь";
+    user_phone.focus();
+});
+user_name.addEventListener("focus", () => {
+    mistake.innerText = " ";
+});
+user_phone.addEventListener("focus", () => {
+    mistake.innerText = " ";
+    if (country_selected != "yes") {
+        mistake.innerText = "Выберите страну!"
+        user_phone.blur();
+    }
+});
+</script>
+</body>
+</html>
