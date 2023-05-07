@@ -138,7 +138,23 @@ input:focus {
     margin: 0 auto;
 }
 #coffee_cart, #popcorn_cart, #cocoa_cart, #smoothie_cart {
-    display: none;
+    visibility: hidden;
+}
+#coffee_cart, #coffee_cart_text {
+    display: table-cell;
+    vertical-align: middle;    
+}
+#popcorn_cart, #popcorn_cart_text {
+    display: table-cell;
+    vertical-align: middle;    
+}
+#cocoa_cart, #cocoa_cart_text {
+    display: table-cell;
+    vertical-align: middle;    
+}
+#smoothie_cart, #smoothie_cart_text {
+    display: table-cell;
+    vertical-align: middle;    
 }
 </style>
 </head>
@@ -313,19 +329,19 @@ order_but.addEventListener("click", () => {
     cart.style.display = "block";
     if (coffee_selected == true) {
         coffee_cart_text.innerText =  "Каппучино * " + coffee_count
-        coffee_cart.style.display = "block"
+        coffee_cart.style.visibility = "visible"
     }
     if (popcorn_selected == true) {
         popcorn_cart_text.innerText = "Попкорн * " +  popcorn_count  
-        popcorn_cart.style.display = "block"   
+        popcorn_cart.style.visibility = "visible"   
     }
     if (cocoa_selected == true) {
         cocoa_cart_text.innerText = "Какао * " +  cocoa_count 
-        cocoa_cart.style.display = "block"   
+        cocoa_cart.style.visibility = "visible"   
     }
     if (smoothie_selected == true) {
         smoothie_cart_text.innerText = "Смузи * " +  smoothie_count
-        smoothie_cart.style.display = "block"    
+        smoothie_cart.style.visibility = "visible"    
     }
 });
 cart_but.addEventListener("click", () => {
