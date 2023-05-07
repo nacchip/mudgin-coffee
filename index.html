@@ -136,6 +136,9 @@ input:focus {
 #cart {
     display: none;    
 }
+#coffee_cart, #popcorn_cart, #cocoa_cart, #smoothie_cart {
+    display: none;
+}
 </style>
 </head>
 <body>
@@ -219,14 +222,17 @@ input:focus {
 <img id="coffee_cart_img" src="./img/non anim/Coffee.png">
 <p id="coffee_cart_text"></p>
 </div>
+<br><br>
 <div id="popcorn_cart">
 <img id="popcorn_cart_img" src="./img/non anim/Pop corn.png">
 <p id="popcorn_cart_text"></p>
 </div>
+<br><br>
 <div id="cocoa_cart">
 <img id="cocoa_cart_img" src="./img/non anim/Cocoa.png">
 <p id="cocoa_cart_text"></p>
 </div>
+<br><br>
 <div id="smoothie_cart">
 <img id="smoothie_cart_img" src="./img/non anim/Smoothie.png">
 <p id="smoothie_cart_text"></p>
@@ -306,16 +312,19 @@ order_but.addEventListener("click", () => {
     cart.style.display = "block";
     if (coffee_selected == true) {
         coffee_cart_text.innerText =  "Каппучино * " + coffee_count
-       coffee_cart.style.display = "block"
+        coffee_cart.style.display = "block"
     }
     if (popcorn_selected == true) {
-        cart_text.innerText = cart_text.innerText + "\n" + "Попкорн * " +  popcorn_count     
+        popcorn_cart_text.innerText = "Попкорн * " +  popcorn_count  
+        popcorn_cart.style.display = "block"   
     }
     if (cocoa_selected == true) {
-        cart_text.innerText = cart_text.innerText + "\n" + "Какао * " +  cocoa_count     
+        cocoa_cart_text.innerText = "Какао * " +  cocoa_count 
+        cocoa_cart.style.display = "block"   
     }
     if (smoothie_selected == true) {
-        cart_text.innerText = cart_text.innerText + "\n" + "Смузи * " +  smoothie_count     
+        smoothie_cart_text.innerText = "Смузи * " +  smoothie_count
+        smoothie_cart.style.display = "block"    
     }
 });
 cart_but.addEventListener("click", () => {
