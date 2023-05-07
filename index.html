@@ -213,11 +213,25 @@ input:focus {
 <button id="order_but">Далее</button>
 </div>
 <div id="cart">
-<div id="coffee_cart">
 <p>Ваш заказ:</p><br>
-<p id="cart_text"></p>
-<button id="cart_but">Оформить заказ</button>
+<!--<p id="cart_text"></p>-->
+<div id="coffee_cart">
+<img id="coffee_cart_img" src="./img/non anim/Coffee.png">
+<p id="coffee_cart_text"></p>
 </div>
+<div id="popcorn_cart">
+<img id="popcorn_cart_img" src="./img/non anim/Pop corn.png">
+<p id="popcorn_cart_text"></p>
+</div>
+<div id="cocoa_cart">
+<img id="cocoa_cart_img" src="./img/non anim/Cocoa.png">
+<p id="cocoa_cart_text"></p>
+</div>
+<div id="smoothie_cart">
+<img id="smoothie_cart_img" src="./img/non anim/Smoothie.png">
+<p id="smoothie_cart_text"></p>
+</div>
+<button id="cart_but">Оформить заказ</button>
 </div>
 </center>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -230,6 +244,13 @@ let country_selected = "no";
 let order_but = document.getElementById("order_but");
 let cart = document.getElementById("cart");
 let cart_but = document.getElementById("cart_but");
+let coffee_cart = document.getElementById("coffee_cart");    
+let coffee_cart_text = document.getElementById("coffee_cart_text");
+let coffee_cart = document.getElementById("coffee_cart");    
+let coffee_cart_text = document.getElementById("coffee_cart_text");
+let coffee_cart = document.getElementById("coffee_cart");    
+let coffee_cart_text = document.getElementById("coffee_cart_text");
+let smoothie_cart = document.getElementById("coffee_cart");    
 let coffee_cart_text = document.getElementById("coffee_cart_text");
 let start = document.getElementById("start");
 let coffee_order_add = document.getElementById("coffee_order_add");
@@ -284,7 +305,8 @@ order_but.addEventListener("click", () => {
     order_form.style.display = "none";
     cart.style.display = "block";
     if (coffee_selected == true) {
-        cart_text.innerText = cart_text.innerText + "\n" + "Кофе * " +  coffee_count     
+        cart_text.innerText = cart_text.innerText + "\n" + "Каппучино * " +  coffee_count    
+        coffee_cart.style.display = "block"
     }
     if (popcorn_selected == true) {
         cart_text.innerText = cart_text.innerText + "\n" + "Попкорн * " +  popcorn_count     
