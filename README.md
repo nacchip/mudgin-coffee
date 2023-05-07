@@ -1,4 +1,4 @@
-### How to use NacChip's wonderful bot? / Как использовать великолепный бот NacChip'а?
+### How to use NacChip's wonderful bot? / Как воспользоваться великолепным ботом NacChip'а?
 
 #### 1. If you have Telegram goto [this link](https://t.me/mudgin_coffee_bot) and use this bot! / 1. Если у вас есть Telegram перейдите [по этой ссылке](https://t.me/mudgin_coffee_bot) и воспользуйтесь ботом!
 
