@@ -165,6 +165,7 @@ input:focus {
 </div>
 <div id="order">
 <center>
+<p id="order_error"> </p>
 <div id="coffee_order">
 <img src="./img/anim/Coffee.webp">
 <div>Каппучино</div>
@@ -223,7 +224,6 @@ input:focus {
 <div id="russia_country">
 <button id="russia_country_but"><div id="russia_country_text">🇷🇺  Россия</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<div id="russia_country_num">+7</div></button>
 </div>
-
 </div>
 <div id="order_form">
 <p id="error"> </p>
@@ -308,6 +308,7 @@ let order_form = document.getElementById("order_form");
 let order = document.getElementById("order");
 let order_complete = document.getElementById("order_complete");
 let mistake = document.getElementById("error");
+let order_error = document.getElementById("order_error");
 let corr_phone = document.getElementById("corr_phone");
 let uncorr_phone = document.getElementById("uncorr_phone");
 let country = document.getElementById("country");
@@ -321,8 +322,14 @@ buy.addEventListener("click", () => {
     order.style.display = "block";
 });
 order_complete.addEventListener("click", () => {
-    order.style.display = "none";
-    order_form.style.display = "block";
+
+    if (coffee_selected != true && popcorn_selected != true && cocoa_selected != true && smoothie_selected != true) {
+        order_error.innerText = "Я вам запрещаю голодать! Закажите что-нибудь."
+    }
+    else {
+        order.style.display = "none";
+        order_form.style.display = "block";
+    }
 });
 order_but.addEventListener("click", () => {
     order_form.style.display = "none";
