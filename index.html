@@ -326,7 +326,8 @@ buy.addEventListener("click", () => {
 order_complete.addEventListener("click", () => {
 
     if (coffee_selected != true && popcorn_selected != true && cocoa_selected != true && smoothie_selected != true) {
-        order_error.innerText = "Я вам запрещаю голодать! Закажите что-нибудь."
+        order_error.innerText = "Я вам запрещаю голодать! Закажите что-нибудь.";
+        order_error.focus();
     }
     else {
         order.style.display = "none";
