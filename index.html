@@ -133,6 +133,9 @@ input:focus {
 #coffee_order_minus, #popcorn_order_minus, #cocoa_order_minus, #smoothie_order_minus {
     background-color: #f40f3e;
 }
+#coffee_order_count_text {
+    display: none;
+}
 #cart {
     display: none;    
     margin: 0 auto;
@@ -156,7 +159,7 @@ input:focus {
 <div id="coffee_order">
 <img id="coffee_order_img" src="./img/anim/Coffee.webp">
 <p>Каппучино</p>
-<p id="coffee_order_count_text"></p>
+<p id="coffee_order_count_text">0</p>
 <button id="coffee_order_add">
 Добавить
 </button>
@@ -373,6 +376,7 @@ country.addEventListener("click", () => {
 coffee_order_add.addEventListener("click", () => {
     coffee_selected = true;
     coffee_count = 1;
+    coffee_order_count_text.style.display = "online";
     coffee_order_count_text.innerText = 1;
     coffee_order_plus.style.display = "inline";
     coffee_order_minus.style.display = "inline";
