@@ -134,7 +134,7 @@ input:focus {
     background-color: #f40f3e;
 }
 #coffee_order_count_text {
-    display: none;
+    visibility: hidden;
 }
 #cart {
     display: none;    
@@ -376,7 +376,7 @@ country.addEventListener("click", () => {
 coffee_order_add.addEventListener("click", () => {
     coffee_selected = true;
     coffee_count = 1;
-    coffee_order_count_text.style.display = "online";
+    coffee_order_count_text.style.visibility = "visible";
     coffee_order_count_text.innerText = 1;
     coffee_order_plus.style.display = "inline";
     coffee_order_minus.style.display = "inline";
