@@ -140,9 +140,9 @@ input:focus {
 #coffee_cart, #popcorn_cart, #cocoa_cart, #smoothie_cart {
     display: none;
 }
-/*#coffee_order_text, #coffee_order_desc {
+#coffee_order_text, #coffee_order_img {
     display: inline;    
-}*/
+}
 </style>
 </head>
 <body>
@@ -154,9 +154,11 @@ input:focus {
 <center>
 <p id="order_error"> </p>
 <div id="coffee_order">
-<img src="./img/anim/Coffee.webp">
-<p id="coffee_order_text">Каппучино</p>
-<p id="coffee_order_desc">Порошковый каппучино</p>
+<img id="coffee_order_img" src="./img/anim/Coffee.webp">
+<div id="coffee_order_text">
+<p>Каппучино</p>
+<p>Порошковый каппучино</p>
+</div>
 <br>
 <p id="coffee_order_count_text"></p>
 <button id="coffee_order_add">
