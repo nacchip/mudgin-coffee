@@ -113,7 +113,7 @@ input:focus {
 }
 #coffee_order, #popcorn_order, #cocoa_order, #smoothie_order {
     width: 100%;
-    height: 15%;
+    height: 40px;
 }
 #coffee_order_add, #popcorn_order_add, #cocoa_order_add, #smoothie_order_add {
     background-color: #6ca71a;
@@ -140,6 +140,9 @@ input:focus {
 #coffee_cart, #popcorn_cart, #cocoa_cart, #smoothie_cart {
     display: none;
 }
+#coffee_order_text, #coffee_order_desc {
+    display: inline;    
+}
 </style>
 </head>
 <body>
@@ -152,7 +155,8 @@ input:focus {
 <p id="order_error"> </p>
 <div id="coffee_order">
 <img src="./img/anim/Coffee.webp">
-<div>Каппучино</div>
+<p id="coffee_order_text">Каппучино</p>
+<p id="coffee_order_desc">Порошковый каппучино</p>
 <br>
 <p id="coffee_order_count_text"></p>
 <button id="coffee_order_add">
