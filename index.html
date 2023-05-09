@@ -146,6 +146,9 @@ input:focus {
 #coffee_order_count_text, #coffee_order_add {
     display: inline;    
 }
+#order_text {
+    font-size: 19px;     
+}
 </style>
 </head>
 <body>
@@ -158,7 +161,7 @@ input:focus {
 <p id="order_error"> </p>
 <div id="coffee_order">
 <img id="coffee_order_img" src="./img/anim/Coffee.webp">
-<p>Каппучино</p>
+<p id="order_text">Каппучино</p>
 <p id="coffee_order_count_text">0</p>
 <button id="coffee_order_add">
 Добавить
@@ -168,7 +171,7 @@ input:focus {
 </div>
 <div id="popcorn_order">
 <img src="./img/anim/Pop corn.webp">
-<div>Попкорн</div>
+<p id="order_text">Попкорн</p>
 <br>
 <p id="popcorn_order_count_text"></p>
 <button id="popcorn_order_add">
@@ -179,7 +182,7 @@ input:focus {
 </div>
 <div id="cocoa_order">
 <img src="./img/anim/Cocoa.webp">
-<div>Какао</div>
+<p id="order_text">Какао</p>
 <br>
 <p id="cocoa_order_count_text"></p>
 <button id="cocoa_order_add">
@@ -190,7 +193,7 @@ input:focus {
 </div>
 <div id="smoothie_order">
 <img src="./img/anim/Smoothie.webp">
-<div>Смузи</div>
+<p id="order_text">Смузи</p>
 <br>
 <p id="smoothie_order_count_text"></p>
 <button id="smoothie_order_add">
